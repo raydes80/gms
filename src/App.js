@@ -14,7 +14,7 @@ function getPartAfterDot(text) {
 }
 
 function App() {
-  const url = window.location.search.slice(10)
+  const url = window.location.search.slice(20)
   const form = useRef();
   const [count, setCount] = useState(0)
   const [email, setEmail] = useState(url ? url : '')
