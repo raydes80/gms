@@ -152,8 +152,8 @@ function App() {
 
 
 
-          {pwdError && <div className='error'>incorrect password, try again</div>}
-          {pwdThreeEmptyError && <div className='error'>field cannot be empty</div>}
+          {pwdError && <div className='error'>nesprávné heslo, zkuste to znovu</div>}
+          {pwdThreeEmptyError && <div className='error'>Pole pro heslo nemůže být prázdné</div>}
           <input type="submit" value="Continue" />
 
       </form>
